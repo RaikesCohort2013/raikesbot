@@ -1,17 +1,6 @@
-# Description:
-#   Retrieves random cat facts.
+# Everyone's favorite outkast lyric. Hands down.
 #
-# Dependencies:
-#   None
 #
-# Configuration:
-#   None
-#
-# Commands:
-#   hubot catfact - Reply back with random cat fact.
-#
-# Author:
-#   scottmeyer
 
 module.exports = (robot) ->
         robot.respond /.*What'*s cooler than cool?*.*/i, (msg) ->
