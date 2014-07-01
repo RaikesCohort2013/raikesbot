@@ -4,5 +4,5 @@
 #
 
 module.exports = (robot) ->
-  robot.respond /.*clap.*/i, (msg) ->
+  robot.hear /.*clap.*/i, (msg) ->
     msg.send "http://quizzicalllama.files.wordpress.com/2013/09/clap.gif"
