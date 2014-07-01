@@ -16,5 +16,5 @@ yaas = [
 , "http://i111.photobucket.com/albums/n134/LambyToes/tumblr_lsnvfzdHTW1qgt71j.gif"
 ]
 module.exports = (robot) ->
-  robot.respond /ya*as/i, (msg) ->
+  robot.respond /ya.*as/i, (msg) ->
     msg.send msg.random yaas
