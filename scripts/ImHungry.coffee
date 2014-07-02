@@ -20,7 +20,7 @@ module.exports = (robot) ->
          data = JSON.parse(body)
          foods = data.items
 
-         foodList = "#{ foods[index].trim().replace(/[^a-zA-Z ]/g, "") for index of foods }"
+         foodList = "#{ foods[index].trim().replace(/[^a-zA-Z ]/g, "") for index of foods } \n"
 
          text = "#{meal} today at Selleck is: \n #{foodList}"
 
