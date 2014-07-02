@@ -14,11 +14,11 @@ module.exports = (robot) ->
       getFoods msg, "http://brobin.me/tools/api/food.php?meal=#{ msg.match[1] }", "#{ msg.match[1]}"
 
 getFoods = (msg, url, meal) ->
-   msg.http(url).get() (err, res, body) ->
-      return msg.send "Couldn't access the menu!" if err
-      try
-            data = JSON.parse(body)
-            foods = data.items
+	msg.http(url).get() (err, res, body) ->
+		return msg.send "Couldn't access the menu!" if err
+		try
+   			data = JSON.parse(body)
+   			foods = data.items
 
             foodList = for name of food
                "#{name} \n"
