@@ -7,18 +7,20 @@
 #
 # Authors:
 #  JSON: Tobin Brown
-#  Script: Michael Jensen
+#  Script: Michael Jensen / Tobin Brown
 
 module.exports = (robot) ->
    robot.hear /what[']*s for ?([\w]+)\?*$/i, (msg) ->
-      url = "http://brobin.me/tools/api/food.php?meal=#{ msg.match[1].trim() }"
       meal = msg.match[1].trim()
+      url = "http://brobin.me/tools/api/food.php?meal=#{ meal }"
       msg.http("#{ url }").get() (err, res, body) ->
+
          msg.send "Couldn't access the menu!" if err
+
          data = JSON.parse(body)
          foods = data.items
 
-         foodList = "#{ foods[index].trim() for index of foods }"
+         foodList = "#{ foods[index].trim().replace(/[^a-zA-Z ]/g, "") for index of foods }"
 
          text = "#{meal} today at Selleck is: \n #{foodList}"
 
