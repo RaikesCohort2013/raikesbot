@@ -11,21 +11,15 @@
 
 module.exports = (robot) ->
    robot.hear /what[']*s for ?([\w]+)\?*$/i, (msg) ->
-      getFoods msg, "http://brobin.me/tools/api/food.php?meal=#{ msg.match[1] }", "#{ msg.match[1]}"
+      url = "http://brobin.me/tools/api/food.php?meal=#{ msg.match[1].trim() }"
+      meal = msg.match[1].trim()
+      msg.http("#{ url }").get() (err, res, body) ->
+         msg.send "Couldn't access the menu!" if err
+         data = JSON.parse(body)
+         foods = data.items
 
-getFoods = (msg, url, meal) ->
-	msg.http(url).get() (err, res, body) ->
-		return msg.send "Couldn't access the menu!" if err
-		try
-   			data = JSON.parse(body)
-   			foods = data.items
+         foodList = "#{ foods[index].trim() for index of foods }"
 
-            foodList = for name of food
-               "#{name} \n"
+         text = "#{meal} today at Selleck is: \n #{foodList}"
 
-            text = "#{meal} today at Selleck is: \n #{foodList}"
-
-            msg.send text
-
-         catch err
-            return msg.send "Reading the menu is hard sometimes. #sorryNotSorry"
+         msg.send text
