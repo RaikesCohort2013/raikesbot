@@ -21,8 +21,6 @@ module.exports = (robot) ->
          foods = data.items
 
          foodList = "#{ foods[index].trim().replace(/[^a-zA-Z ]/g, "") for index of foods }"
-         
-         foodList = "#{ foodList[index].replace( /,/g,"\n") for index of foods }"
 
          text = "#{meal} today at Selleck is: \n #{foodList}"
 
