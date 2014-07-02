@@ -3,5 +3,5 @@
 #
 
 module.exports = (robot) ->
-        robot.respond /.*What'*s cooler than cool?*.*/i, (msg) ->
+        robot.respond /.*What[']*s cooler than cool[?]*.*/, (msg) ->
           msg.send "ICE COLD!"
