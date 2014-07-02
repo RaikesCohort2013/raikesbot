@@ -13,7 +13,7 @@ module.exports = (robot) ->
 	robot.hear /what[']*s for ?([\w]+)\?*$/i, (msg) ->
 		getFoods msg, "http://brobin.me/tools/api/food.php?meal=#{ msg.match[1] }", "#{ msg.match[1]}"
 
-getFoods = (url, meal) ->
+getFoods = (msg, url, meal) ->
 	msg.http(url).get() (err, res, body) ->
 		return msg.send "Couldn't access the menu!" if err
 		try
