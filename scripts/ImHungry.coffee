@@ -22,7 +22,7 @@ module.exports = (robot) ->
 
          foodList = "#{ foods[index].trim().replace(/[^a-zA-Z ]/g, "") for index of foods }"
 
-         if !foodList?
+         if foodList is ''
             text = "Selleck isn't serving #{meal} today. Or probably ever."
          else
             text = "#{meal} today at Selleck is: \n #{foodList}"
