@@ -1,6 +1,9 @@
 # Description:
 #	When prompted, this script shows alot to the room
 #
+# Commands:
+# 	alot
+#
 # Author:
 #	Mike Jensen, Hyperbole and a Half
 
